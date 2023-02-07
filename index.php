@@ -2,9 +2,9 @@
 
 <?php
     include_once "model/conexion.php";
-    $sentencia = $bd -> query("select * from persona");
-    $persona = $sentencia->fetchAll(PDO::FETCH_OBJ);
-    //print_r($persona);
+    $sentencia = $bd -> query("select * from agenda");
+    $agenda = $sentencia->fetchAll(PDO::FETCH_OBJ);
+    //print_r($agenda);
 ?>
 
 <div class="container mt-5">
@@ -81,24 +81,30 @@
                     <table class="table align-middle">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
+                               
                                 <th scope="col">Nombre</th>
+                                <th scope="col">Apellidos</th>
+                                <th scope="col">Dirección</th>
+                                <th scope="col">Teléfono</th>
                                 <th scope="col">Edad</th>
-                                <th scope="col">Signo</th>
                                 <th scope="col" colspan="2">Opciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             
                             <?php 
-                                foreach($persona as $dato){ 
+                                foreach($agenda as $dato){ 
                             ?>
 
                             <tr>
-                                <td scope="row"><?php echo $dato->codigo; ?></td>
+                              
                                 <td><?php echo $dato->nombre; ?></td>
+                                <td><?php echo $dato->apellidos; ?></td>
+                                <td><?php echo $dato->direccion; ?></td>
+                                <td><?php echo $dato->telefono; ?></td>
                                 <td><?php echo $dato->edad; ?></td>
-                                <td><?php echo $dato->signo; ?></td>
+                          
+                                
                                 <td><a class="text-success" href="editar.php?codigo=<?php echo $dato->codigo; ?>"><i class="bi bi-pencil-square"></i></a></td>
                                 <td><a onclick="return confirm('Estas seguro de eliminar?');" class="text-danger" href="eliminar.php?codigo=<?php echo $dato->codigo; ?>"><i class="bi bi-trash"></i></a></td>
                             </tr>
@@ -124,13 +130,22 @@
                         <input type="text" class="form-control" name="txtNombre" autofocus required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Edad: </label>
-                        <input type="number" class="form-control" name="txtEdad" autofocus required>
+                        <label class="form-label">Apellidos: </label>
+                        <input type="text" class="form-control" name="txtapellidos" autofocus required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Signo: </label>
-                        <input type="text" class="form-control" name="txtSigno" autofocus required>
+                        <label class="form-label">direccion: </label>
+                        <input type="text" class="form-control" name="txtdireccion" autofocus required>
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">telefono: </label>
+                        <input type="text" class="form-control" name="txttelefono" autofocus required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Edad: </label>
+                        <input type="number" class="form-control" name="txtedad" autofocus required>
+                    </div>
+             
                     <div class="d-grid">
                         <input type="hidden" name="oculto" value="1">
                         <input type="submit" class="btn btn-primary" value="Registrar">
