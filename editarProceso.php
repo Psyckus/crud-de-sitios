@@ -1,17 +1,19 @@
 <?php
     print_r($_POST);
-    if(!isset($_POST['codigo'])){
+    if(!isset($_POST['telefono'])){
         header('Location: index.php?mensaje=error');
     }
 
     include 'model/conexion.php';
-    $codigo = $_POST['codigo'];
     $nombre = $_POST['txtNombre'];
+    $apellidos = $_POST['txtApellidos'];
+    $direccion = $_POST['txtDireccion'];
+    $telefono = $_POST['txtTelefono'];
     $edad = $_POST['txtEdad'];
-    $signo = $_POST['txtSigno'];
+    $altura = $_POST['txtAltura'];
 
-    $sentencia = $bd->prepare("UPDATE persona SET nombre = ?, edad = ?, signo = ? where codigo = ?;");
-    $resultado = $sentencia->execute([$nombre, $edad, $signo, $codigo]);
+    $sentencia = $bd->prepare("UPDATE agenda SET nombre = ?, apellidos = ?, direccion = ?, telefono = ?, edad = ?, altura = ? where telefono = ?;");
+    $resultado = $sentencia->execute([$nombre, $apellidos, $direccion, $telefono, $edad, $altura]);
 
     if ($resultado === TRUE) {
         header('Location: index.php?mensaje=editado');
