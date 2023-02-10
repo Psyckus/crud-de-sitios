@@ -1,14 +1,14 @@
 <?php 
-    if(!isset($_GET['codigo'])){
+    if(!isset($_GET['telefono'])){
         header('Location: index.php?mensaje=error');
         exit();
     }
 
     include 'model/conexion.php';
-    $codigo = $_GET['codigo'];
+    $telefono = $_GET['telefono'];
 
-    $sentencia = $bd->prepare("DELETE FROM persona where codigo = ?;");
-    $resultado = $sentencia->execute([$codigo]);
+    $sentencia = $bd->prepare("DELETE FROM agenda where telefono = ?;");
+    $resultado = $sentencia->execute([$telefono]);
 
     if ($resultado === TRUE) {
         header('Location: index.php?mensaje=eliminado');
