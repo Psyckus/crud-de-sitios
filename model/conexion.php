@@ -1,11 +1,11 @@
 <?php
-$contrasena = "Day.305450056";
-$usuario = "Day_prueba";
-$nombre_bd = "tiusr3pl_agendaday"; 
+$contrasena = "";
+$usuario = "root";
+$nombre_bd = "agenda"; 
 
 try{
     $bd = new PDO(
-        'mysql:host=localhost; dbname='.$nombre_bd,
+        'mysql:host=localhost:3308; dbname='.$nombre_bd,
         $usuario,
         $contrasena,
         array(PDO::MYSQL_ATTR_INIT_COMMAND=> "SET NAMES utf8")

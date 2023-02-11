@@ -106,7 +106,7 @@
                           
                                 
                                 <td><a class="text-success" href="editar.php?id_agenda=<?php echo $dato->id_agenda; ?>"><i class="bi bi-pencil-square"></i></a></td>
-                                <td><a onclick="return confirm('Estas seguro de eliminar?');" class="text-danger" href="eliminar.php?codigo=<?php echo $dato->codigo; ?>"><i class="bi bi-trash"></i></a></td>
+                                <td><a onclick="return confirm('Estas seguro de eliminar?');" class="text-danger" href="eliminar.php?id_agenda=<?php echo $dato->id_agenda; ?>"><i class="bi bi-trash"></i></a></td>
                             </tr>
 
                             <?php 
